@@ -1,0 +1,9 @@
+version: '2'
+services:
+  foo:
+    build: foo
+    ports:
+     - 5000
+    volumes:
+     - .:/code
+
