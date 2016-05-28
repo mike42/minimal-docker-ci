@@ -4,6 +4,8 @@ services:
   - docker
 
 script:
+  - docker-compose version
+  - docker version
   - docker-compose up --build -d
   - docker-compose down
 
