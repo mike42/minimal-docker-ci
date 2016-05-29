@@ -1,10 +1,8 @@
 version: '2'
 services:
   foo:
-    build: foo
+    build: foo_server
     ports:
      - 5000
-    volumes:
-     - .:/code
     container_name: foo_1
 
