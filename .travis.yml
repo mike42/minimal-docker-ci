@@ -5,18 +5,22 @@ dist: trusty
 addons:
   apt:
     sources:
-      - sourceline: "deb https://apt.dockerproject.org/repo ubuntu-trusty main"
+      - sourceline: ""
         key_url: https://get.docker.com/gpg
     packages:
       - docker-engine
 
 install:
-  - pip install docker-compose
+  # Install docker-endine and docker-compose
+  - curl -sSL "https://get.docker.com/gpg" | sudo -E apt-key add -
+  - echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee -a /etc/apt/sources.list
+  - sudo apt-get update
+  - sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install docker-engine
+  - sudo pip install docker-compose
 
 script:
   - docker-compose version
   - docker version
-#  - docker-compose up --build -d
-#  - docker-compose down
+  - docker-compose up --build -d
+  - docker-compose down
 ...
-
