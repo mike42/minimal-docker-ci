@@ -1,18 +1,22 @@
 ---
+
+# Use Ubuntu 'trusty' distribution
 sudo: required
 dist: trusty
 
 install:
-  # Install docker-endine and docker-compose
+  # Update docker-engine using Ubuntu 'trusty' apt repo
   - curl -sSL "https://get.docker.com/gpg" | sudo -E apt-key add -
   - echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee -a /etc/apt/sources.list
   - sudo apt-get update
   - sudo apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" --assume-yes install docker-engine
+  - docker version
+  # Update docker
   - sudo pip install docker-compose
+  - docker-compose version
 
 script:
-  - docker-compose version
-  - docker version
   - docker-compose up --build -d
+  - python test.py
   - docker-compose down
 ...

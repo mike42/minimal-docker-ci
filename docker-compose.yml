@@ -6,4 +6,5 @@ services:
      - 5000
     volumes:
      - .:/code
+    container_name: foo_1
 
