@@ -1,11 +1,22 @@
+---
 sudo: required
+dist: trusty
 
-services:
-  - docker
+addons:
+  apt:
+    sources:
+      - sourceline: "deb https://apt.dockerproject.org/repo ubuntu-trusty main"
+        key_url: https://get.docker.com/gpg
+    packages:
+      - docker-engine
+
+install:
+  - pip install docker-compose
 
 script:
   - docker-compose version
   - docker version
-  - docker-compose up --build -d
-  - docker-compose down
+#  - docker-compose up --build -d
+#  - docker-compose down
+...
 
