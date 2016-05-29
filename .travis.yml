@@ -2,14 +2,6 @@
 sudo: required
 dist: trusty
 
-addons:
-  apt:
-    sources:
-      - sourceline: ""
-        key_url: https://get.docker.com/gpg
-    packages:
-      - docker-engine
-
 install:
   # Install docker-endine and docker-compose
   - curl -sSL "https://get.docker.com/gpg" | sudo -E apt-key add -
