@@ -24,7 +24,7 @@ before_script:
   - docker-compose up --build -d
 
 script:
-  - python test.py
+  - ./test.sh
 
 after_script:
   - docker-compose down
